@@ -1,0 +1,97 @@
+  1.view2在view1的右边，（上边，下边，左边）
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@10);
+        make.top.equalTo(@10);
+        make.width.equalTo(@100);
+        make.height.equalTo(@100);
+    }];
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@60);
+        make.height.equalTo(@150);
+        
+        //view2在view1的右边
+        make.left.equalTo(view1.mas_right).with.offset(10);
+        make.top.equalTo(@20);
+        
+        /**
+         * view2在view1的下边
+         *      make.top.equalTo(view1.mas_bottom).with.offset(10);
+         *      make.left.equalTo(@20);
+         */
+    }];
+    
+  2.view1与view2上对齐（左对齐，下对齐，右对齐）
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@10);
+        make.top.equalTo(@10);
+        make.width.equalTo(@100);
+        make.height.equalTo(@100);
+    }];
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@60);
+        make.height.equalTo(@150);
+        
+        /**
+         *  左对齐
+         *  make.top.equalTo(view1.mas_bottom).with.offset(10);
+         *  make.leading.equalTo(view1.mas_leading);
+         */
+        
+        //上对齐
+        make.left.equalTo(view1.mas_right).with.offset(10);
+        make.top.equalTo(view1.mas_top);
+    }];
+    
+  3.view1与view2居中对齐（水平对齐，垂直对齐）
+      [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@10);
+        make.top.equalTo(@10);
+        make.width.equalTo(@100);
+        make.height.equalTo(@100);
+    }];
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@50);
+        make.height.equalTo(@50);
+        /**
+         *  居中对齐
+            make.center.equalTo(view1);
+         */
+        
+        /**
+         *  水平对齐
+            make.left.equalTo(view1.mas_right).with.offset(10);
+            make.centerY.equalTo(view1);
+         */
+        
+        //垂直对齐
+        make.top.equalTo(view1.mas_bottom).with.offset(10);
+        make.centerX.equalTo(view1);
+    }];
+  
+  4.view1与view2等高等宽
+  [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@10);
+        make.top.equalTo(@10);
+        make.width.equalTo(@100);
+        make.height.equalTo(@100);
+    }];
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(@(-10));
+        make.right.equalTo(@(-10));
+        
+        /**
+         *  等宽等高
+            make.size.equalTo(view1);
+         */
+        
+        /**
+         *  等宽
+            make.width.equalTo(view1);
+            make.height.equalTo(@40);
+         */
+        
+        //等高
+        make.width.equalTo(@40);
+        make.height.equalTo(view1);
+    }];
+  
