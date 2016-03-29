@@ -1,0 +1,47 @@
+1.view2的宽高是view1的2倍
+  [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(@10);
+      make.top.equalTo(@10);
+      make.width.equalTo(@100);
+      make.height.equalTo(@100);
+    }];
+  [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.bottom.equalTo(@(-10));
+      make.right.equalTo(@(-10));
+      
+      /**
+       *  宽高的比例啊
+       make.size.equalTo(view1).multipliedBy(2);
+       */
+      
+      /**
+       *  宽的比例
+       make.width.equalTo(view1).multipliedBy(2);
+       make.height.equalTo(@40);
+       */
+
+      //高的比例
+      make.width.equalTo(@40);
+      make.height.equalTo(view1).multipliedBy(2);
+  }];
+  
+2.view2的左边是view1的两倍
+  [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(@10);
+      make.top.equalTo(@20);
+      make.width.equalTo(@100);
+      make.height.equalTo(@100);
+  }];
+  [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.size.equalTo(view1);
+
+      //上边是view1的两倍
+      make.top.equalTo(view1).multipliedBy(2);
+      make.right.equalTo(@(-10));
+      
+      /**
+       *  左边是view1的两倍
+          make.left.equalTo(view1).multipliedBy(2);
+          make.bottom.equalTo(@(-10));
+       */
+  }]
