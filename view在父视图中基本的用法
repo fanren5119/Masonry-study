@@ -1,0 +1,29 @@
+   随着ios机型的不断扩展，屏幕的尺寸也越来越多样化，对于ios开发者来说，屏幕的适配在工作中也占了很大的比例，ios7以后，苹果推出了autoLayout，
+的技术来对屏幕进行适配。但是写纯代码的autolayout是一件极其痛苦的事，而Masonry的出现为那些喜欢纯代码的人提供了遍历。
+   本人最近学习了Masonry，在这里写下了学习的过程。
+   
+   1.设置一个view，在父视图中的位置，上下左右固定
+   	  [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.right.equalTo(@0);
+        make.top.equalTo(@(-10));
+        make.bottom.equalTo(@(-10));
+				//make.edges.equalTo(UIEdgeInsetsMake(0, 0, -10, -10));
+    	}];
+    	
+    2.设置一个view，在父视图中，左上固定，宽高固定
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.top.equalTo(@0);
+        make.width.equalTo(@100);
+        make.height.equalTo(@100);
+        // make.size.mas_equalTo(CGSizeMake(100, 100));
+    }];
+    
+    3.设置一个view，在父视图中，宽高固定，在父视图中居中
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 100));
+        make.centerX.equalTo(backgroundView);
+        make.centerY.equalTo(backgroundView);
+        // make.center.equalTo(backgroundView);
+    }];
