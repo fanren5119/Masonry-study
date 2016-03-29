@@ -1,0 +1,18 @@
+1.三个视图view1，view2，view3等宽等高
+  [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.size.mas_equalTo(CGSizeMake(60, 60));
+      make.left.equalTo(@10);
+      make.top.equalTo(@10);
+      
+      make.size.equalTo(@[view2, view3]);
+  }];
+  
+  [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(view1.mas_right).offset(10);
+      make.top.equalTo(@10);
+  }];
+  
+  [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(view2.mas_right).offset(10);
+      make.top.equalTo(@10);
+  }];
